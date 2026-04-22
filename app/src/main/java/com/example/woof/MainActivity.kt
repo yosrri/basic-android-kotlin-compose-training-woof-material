@@ -111,18 +111,22 @@ fun DogItem(
     Card(
         modifier = modifier
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(dimensionResource(R.dimen.padding_small)),
-        ) {
-            DogIcon(dog.imageResourceId)
-            DogInformation(dog.name, dog.age)
-            Spacer(modifier = Modifier.weight(1f))
-            DogItemIcon(
-                expanded = expanded,
-                onClick = { expanded = !expanded }
-            )
+        Column() {
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(dimensionResource(R.dimen.padding_small)),
+            ) {
+                DogIcon(dog.imageResourceId)
+                DogInformation(dog.name, dog.age)
+                Spacer(modifier = Modifier.weight(1f))
+                DogItemIcon(
+                    expanded = expanded,
+                    onClick = { expanded = !expanded }
+                )
+            }
+            DogHobby(dog.hobbies,)
         }
     }
 }
@@ -227,6 +231,22 @@ fun DogItemIcon(
     }
 }
 
+@Composable
+fun DogHobby(
+    @StringRes dogHobby: Int,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+    ) {
+        Text(
+            text = stringResource(R.string.about),
+        )
+        Text(
+            text = stringResource(dogHobby)
+        )
+    }
+}
 
 /**
  * Composable that displays what the UI of the app looks like in light theme in the design tab.
