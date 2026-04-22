@@ -214,7 +214,7 @@ fun WoofPreview() {
 @Preview
 @Composable
 fun WoofDarkThemePreview() {
-    WoofTheme(darkTheme = true) {
+    WoofTheme(darkTheme = false) {
         WoofApp()
     }
 }
