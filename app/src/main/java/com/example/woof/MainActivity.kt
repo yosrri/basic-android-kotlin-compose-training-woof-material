@@ -126,15 +126,17 @@ fun DogItem(
                     onClick = { expanded = !expanded }
                 )
             }
-            DogHobby(
-                dog.hobbies,
-                modifier = Modifier.padding(
-                    start = dimensionResource(R.dimen.padding_medium),
-                    top = dimensionResource(R.dimen.padding_small),
-                    end = dimensionResource(R.dimen.padding_medium),
-                    bottom = dimensionResource(R.dimen.padding_small)
+            if (expanded) {
+                DogHobby(
+                    dog.hobbies,
+                    modifier = Modifier.padding(
+                        start = dimensionResource(R.dimen.padding_medium),
+                        top = dimensionResource(R.dimen.padding_small),
+                        end = dimensionResource(R.dimen.padding_medium),
+                        bottom = dimensionResource(R.dimen.padding_small)
+                    )
                 )
-            )
+            }
         }
     }
 }
@@ -232,7 +234,7 @@ fun DogItemIcon(
         modifier = modifier
     ) {
         Icon(
-            imageVector = if (!expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+            imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
             contentDescription = stringResource(R.string.expand_button_content_description),
             tint = MaterialTheme.colorScheme.secondary
         )
